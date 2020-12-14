@@ -18,6 +18,8 @@ func _process(delta):
 	set_position(gravity_vec)
 
 
+
 func _on_Bullet_body_entered(body):
 	if body.is_in_group("map"):
-		queue_free() # Replace with function body.
+		body.queue_free()
+	queue_free()
