@@ -19,5 +19,5 @@ func _process(delta):
 
 
 func _on_Bullet_body_entered(body):
-	if body.get_name() == "map":
+	if body.is_in_group("map"):
 		queue_free() # Replace with function body.

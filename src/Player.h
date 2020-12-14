@@ -13,6 +13,7 @@
 #include <RigidBody2D.hpp>
 #include <Area2D.hpp>
 #include <unordered_map>
+#include "ChainingHash.h"
 
 
 
@@ -28,7 +29,7 @@ private:
     Ref<PackedScene> bullet_scene;
     float fire_rate = 0.1;
     float reload;
-    std::unordered_map<std::string, std::pair<int, int>> MyHash;
+    ChainingHash<std::string, std::pair<int, int>> MyHash;
 
     
 

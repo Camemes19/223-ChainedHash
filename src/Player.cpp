@@ -49,8 +49,12 @@ void Player::UpdateMotionFromInput()
 		motion += Vector2(1, 0);
     if (i->is_action_pressed("shoot"))
         shoot();
-    if (i->is_action_pressed("ui_cancel"))
+   /* if (i->is_action_pressed("pause_menu")){
+
         get_tree()->set_pause(true);
+        get_tree("Pause_Menu")->show();
+    }*/
+        
 
 }
 
@@ -70,9 +74,9 @@ void Player::shoot(){
     {
 
         int spread = 0, alter = 0;
-        int range = MyHash.at("Triple Shot").second;
+        int range = MyHash.at("Single Shot").second;
         
-        for (int i = 0; i < MyHash.at("Triple Shot").first; i++)
+        for (int i = 0; i < MyHash.at("Single Shot").first; i++)
         {
         
             Area2D* bull = (Area2D*)bullet_scene->instance();
