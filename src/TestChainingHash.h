@@ -3,8 +3,6 @@
 
 #include "ChainingHash.h"
 
-void print(string); //used to print output to the godot console
-
 
 class TestChainingHash {
     private:
