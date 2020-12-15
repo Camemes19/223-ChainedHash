@@ -1,39 +1,36 @@
 extends CanvasLayer
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#open pause menu if pause_menu (esc) is pressed
 func _input(event):
 	if event.is_action_pressed("pause_menu"):
+		#pause game
 		get_tree().paused = true
+		#show pause menu to user
 		get_node("Pause_Menu").show()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
+#close pause menu when resume button is pressed 
 func _on_Resume_pressed():
+	#hide pause menu
 	get_node("Pause_Menu").hide()
+	#unpause game 
 	get_tree().paused = false
 
-
-
-
+#quit game if quit game is pressed
 func _on_Quite_Game_pressed():
+	#quit game
 	get_tree().quit()
 
-
+#open bullet menu when bullet button is pressed
 func _on_Bullet_Change_pressed():
+	#hide pause menu from user
+	get_node("Pause_Menu").hide()
+	#show bullet menu to user
 	get_node("Bullet_Menu").show()
 
-
-func _on_Exit_pressed():
+#exit bullet menu when exit button is pressed
+func _on_Button_pressed():
+	#hide bullet menu from user
 	get_node("Bullet_Menu").hide()
-	
+	#show pause menu to user
+	get_node("Pause_Menu").show()

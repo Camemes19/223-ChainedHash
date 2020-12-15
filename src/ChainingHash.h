@@ -1,12 +1,9 @@
-/*
- *  Separate chaining hashtable
- */
+
 
 /*
 Name: Quinn Barnwell
-Description: three examples of implementations of hashing one using 
-chaining, another using linear probing, and the last using linear 
-probing using parallel programming.
+Description: implementation of hashing one using 
+chaining.
 */
 
 #ifndef __CHAINING_HASH_H
