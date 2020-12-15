@@ -24,7 +24,7 @@ Description: Provides MA1-style unit tests for the following ChainingHash member
         (3) posttest
             -Show test result, which might include printing the contents of the hash table
             -Verify that size, bucket count, and empty return the correct values using the verify() helper function - display the FAILED status if incorrect
-            -Show test status = PASSED, FAILED or SEE OUTPUT, which means the contents of the hash table need to be verified by the user 
+            -Show test status = PASSED, FAILED or SEE OUTPUT, which means the contents of the hash table need to be verified by the user (see posttest() function below for more)
             
 */
 
@@ -264,16 +264,16 @@ void TestChainingHash::pretest(string testid, string preconditions, string expec
 void TestChainingHash::posttest(int exSize, int exBucketCount, bool exEmpty, bool initPassed , bool seeOutput) {
     bool passed = initPassed && verify(table, exSize, exBucketCount, exEmpty);
     S/tatus testStatus;
-    if(passed == false)
+    if(passed == false) //if the either the additional pass condition or verify() returns false, the test case was failed
         testStatus = FAILED;
-    else {
-        if(seeOutput)
+    else { //otherwise
+        if(seeOutput) //if the two conditions above passed but the user still needs to verify that the contents of the hash table are correct, the test wasn't necessarily passed - so, instead of saying PASSED, we show SEE OUTPUT to allow the user to verify the hash table
             testStatus = SEE_OUTPUT;
         else
-            testStatus = PASSED;
+            testStatus = PASSED; //if there contents of the hash table don't need to be verified, we've passed the test case
     }
 
-    this->table->printTable();
+    this->table->printTable(); //print the contents of the hash table
 
     print("Status: " + statusStr(testStatus) + "\n");   
 }
@@ -297,6 +297,7 @@ string TestChainingHash::statusStr(Status testStatus) {
     return str;
 }
 
-void print(string consoleMessage) { //used to print output to the godot console
+//used to print output to the godot console
+void print(string consoleMessage) { 
     std::cout << message;
 }
