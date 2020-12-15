@@ -28,7 +28,10 @@ using std::string;
 using std::cout;
 using std::endl;
 
-void print(string); //used to print output to the godot console
+//used to print output to the godot console
+void print(string consoleMessage) {
+    cout << consoleMessage;
+} 
 
 //
 // Separate chaining based hash table - derived from Hash
