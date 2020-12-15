@@ -11,8 +11,8 @@ class TestChainingHash {
         enum Status {
             FAILED = 0,
             PASSED = 1,
-            SEE_OUTPUT = 2
-        }; //private enumerated type used to show unit test result - see TestChainingHash.cpp for more details
+            SEE_OUTPUT = 2 //if the test conditions passed but the user still needs to verify the hash table contents to determine if the unit worked correctly, we show SEE_OUTPUT instead of PASSED
+        }; //private enumerated type used to show unit test result - see TestChainingHash.cpp for more
 
         //private helper functions 
         void pretest(string, string, string);
