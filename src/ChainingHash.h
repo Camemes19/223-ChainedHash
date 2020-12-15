@@ -1,5 +1,4 @@
 
-
 /*
 Name: Quinn Barnwell
 Description: implementation of hashing one using 
@@ -153,6 +152,14 @@ public:
         numElements = 0;
         table.clear();
     }
+    
+    
+    //resets the table to its initial state (see default constructor) - used for testing purposes
+    void reset() {
+        this->sizeOfTable = 11;
+        this->clear();
+        this->table.resize(11);
+    }
 
     //get number of buckets in table
     int bucket_count() {
@@ -260,6 +267,36 @@ private:
             value += sizeofTable;
 
         return value;
+    }
+    
+    void printTableHeader() const {
+        string bucketCountStr = "Bucket count: " + std::to_string(this->bucket_count());
+        string sizeStr = "Size: " + std::to_string(this->size());
+        string emptyStr = "Empty: " + (this->empty() ? "true" : "false");
+
+        print(bucketCountStr + " " + sizeStr + " " + emptyStr + "\n");
+    }
+
+    void printKeyValue(const pair<K, V> &keyValue) const {
+        print("\t\t(" + keyValue.first + " | " + keyValue.second + ") ->\n");
+    }
+
+    void printIndex() const {
+        print("\n\t[" + std::to_string(index) + "]\n");
+    }
+
+    void printBucket(int index) const {
+        list<pair<K, V>> bucket = this->table[index];
+        int bucketSize = bucket.size();
+
+        printIndex(index);
+        if(bucketSize == 0)
+            print("\t\tEMPTY");
+        else {
+            for(auto it = bucket.begin(); it != bucket.end(); ++it)
+                this->printKeyValue(*it);
+        }
+    
     }
 
 };
