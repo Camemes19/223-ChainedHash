@@ -21,5 +21,5 @@
             Also an executable was set up so that the game may be runned without having to set up godot with c++ which requires getting godot and also
             dowloading the godot github files as well and setting both up to work together. 
             
-**Test Cases can be found in TestChainingHash.h/.cpp files in src**
+**TEST CASES CAN BE FOUND IN TestChainingHash.h/.cpp FILES IN src/test cases folder**
     in order to test, the code can not be ran with the game since godot is not friendly to conventional ways of coding in c++ so it can not comile with game
