@@ -296,3 +296,7 @@ string TestChainingHash::statusStr(Status testStatus) {
 
     return str;
 }
+
+void print(string consoleMessage) { //used to print output to the godot console
+    std::cout << message;
+}
