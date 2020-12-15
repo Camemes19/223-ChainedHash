@@ -29,7 +29,7 @@ using std::cout;
 using std::endl;
 
 //used to print output to the godot console
-void print(string consoleMessage) {
+void printGodot(string consoleMessage) {
     cout << consoleMessage;
 } 
 
@@ -307,14 +307,14 @@ private:
         string sizeStr = "Size: " + std::to_string(this->size());
         string emptyStr = "Empty: " + (this->empty() ? "true" : "false");
 
-        print(bucketCountStr + " " + sizeStr + " " + emptyStr + "\n");
+        printGodot(bucketCountStr + " " + sizeStr + " " + emptyStr + "\n");
     }
   
     /*
         prints a key value pair in the format (key | value) -> (our buckets are doubly linked lists (std::list stl container class), which is where the "->" comes from)
     */
     void printKeyValue(const pair<K, V> &keyValue) const {
-        print("\t\t(" + keyValue.first + " | " + keyValue.second + ") ->\n");
+        printGodot("\t\t(" + keyValue.first + " | " + keyValue.second + ") ->\n");
     }
 
     /*
@@ -322,7 +322,7 @@ private:
         format is [index]
     */
     void printIndex() const {
-        print("\n\t[" + std::to_string(index) + "]\n");
+        printGodot("\n\t[" + std::to_string(index) + "]\n");
     }
 
     /*
@@ -334,7 +334,7 @@ private:
 
         printIndex(index);
         if(bucketSize == 0)
-            print("\t\tEMPTY");
+            printGodot("\t\tEMPTY");
         else {
             for(auto it = bucket.begin(); it != bucket.end(); ++it)
                 this->printKeyValue(*it);
