@@ -28,10 +28,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
-//used to print output to the godot console
-void printGodot(string consoleMessage) {
-    cout << consoleMessage;
-} 
+
 
 //
 // Separate chaining based hash table - derived from Hash
@@ -51,6 +48,11 @@ public:
     ~ChainingHash() {
         this->clear();
     }
+
+    //used to print output to the godot console
+    void printGodot(string consoleMessage) {
+    cout << consoleMessage;
+    } 
 
     //check if table is empty
     bool empty() {
@@ -239,7 +241,7 @@ public:
     void printTable() const {
         this->printTableHeader();
         for(int i = 0; i < this->table.size(); ++i)
-            printBucket(i)
+            printBucket(i);
     }
 
 
@@ -321,7 +323,7 @@ private:
         prints the index of a bucket before its contents are displayed
         format is [index]
     */
-    void printIndex() const {
+    void printIndex(int index) const {
         printGodot("\n\t[" + std::to_string(index) + "]\n");
     }
 

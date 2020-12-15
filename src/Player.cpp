@@ -16,7 +16,7 @@ void Player::_register_methods() {
     //send godot the speed of the player and be able to change it in godot engine 
     register_property<Player, float>("Speed", &Player::set_speed, &Player::get_speed, 200.0);
     //send godot the rate of fire and be able to change it in the godot game engine 
-    register_property<Player, float>("rate of fire", &Player::set_fireRate, &Player::get_fireRate, 0.1);
+    register_property<Player, float>("rate of fire", &Player::set_fireRate, &Player::get_fireRate, 0.3);
 }
 
 //constructor 
@@ -72,7 +72,7 @@ void Player::UpdateMotionFromInput()
     //when the shoot key is pressed(space/ left mouse) shoot function played
     if (i->is_action_pressed("shoot"))
         shoot();
-       
+
 
 }
 
