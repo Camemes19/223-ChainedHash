@@ -1,4 +1,3 @@
-
 /*
 Name: Quinn Barnwell
 Description: implementation of hashing one using 
@@ -216,6 +215,27 @@ public:
                 insert(*s);
         }
     }
+    
+    /*
+        prints the contents of the hash table in the format
+            [0] 
+                (key | value) ->
+                (key | value) ->
+                ...
+            [1]
+                (key | value) ->
+                (key | value) ->
+                ...
+            [2] EMPTY
+            [3]
+            ...
+        this function is called in the TestChainingHash class so we can verify that the hash table is updating key/value pairs properly
+    */
+    void printTable() const {
+        this->printTableHeader();
+        for(int i = 0; i < this->table.size(); ++i)
+            printBucket(i)
+    }
 
 
 private:
@@ -269,6 +289,14 @@ private:
         return value;
     }
     
+    /*******************************
+    - PRIVATE PRINT HASH TABLE HELPER FUNCTIONS  -
+    ********************************/
+    
+    /*
+        displays the current size, bucket count, and empty value of the hash table before its contents are displayed
+        in the public printTable() function above
+    */
     void printTableHeader() const {
         string bucketCountStr = "Bucket count: " + std::to_string(this->bucket_count());
         string sizeStr = "Size: " + std::to_string(this->size());
@@ -276,15 +304,25 @@ private:
 
         print(bucketCountStr + " " + sizeStr + " " + emptyStr + "\n");
     }
-
+  
+    /*
+        prints a key value pair in the format (key | value) -> (our buckets are doubly linked lists (std::list stl container class), which is where the "->" comes from)
+    */
     void printKeyValue(const pair<K, V> &keyValue) const {
         print("\t\t(" + keyValue.first + " | " + keyValue.second + ") ->\n");
     }
 
+    /*
+        prints the index of a bucket before its contents are displayed
+        format is [index]
+    */
     void printIndex() const {
         print("\n\t[" + std::to_string(index) + "]\n");
     }
 
+    /*
+        prints the contents of the bucket at the given index using the helper functions above
+    */
     void printBucket(int index) const {
         list<pair<K, V>> bucket = this->table[index];
         int bucketSize = bucket.size();
